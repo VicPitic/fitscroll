@@ -18,7 +18,7 @@ export const BRIDGE_URL = 'http://localhost:8000';
 export const PINTEREST_FETCH_LIMIT = 10;
 
 /** Gemini API key */
-export const GEMINI_API_KEY = 'AIzaSyBGUPLgV_ZpUZuB8QEAo35jNWQpMJQH25M';
+export const GEMINI_API_KEY = 'GEMINI_API_KEY_GOES_HERE';
 
 /** Gemini model for image generation */
 export const GEMINI_MODEL = 'gemini-2.5-flash-image';
