@@ -2,6 +2,8 @@
 
 A TikTok-style mobile app that generates personalized outfit feeds using AI. Users upload a selfie, select their preferred brands and styles, and the app produces "virtual try-on" images via **Gemini** image generation — showing the user wearing curated outfits sourced from **Pinterest**.
 
+![fitscroll demo](./demo.png)
+
 ## How It Works
 
 1. **Onboarding** — Pick your gender, upload a selfie, enter favorite brands, and choose fashion styles (Streetwear, Minimalist, Y2K, Old Money, etc.).
