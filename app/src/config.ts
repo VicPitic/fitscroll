@@ -11,13 +11,14 @@
 // Replace with your hosted bridge URL (e.g. https://fitscroll-bridge.fly.dev)
 // For local dev over the same Wi-Fi, use your machine's LAN IP:
 // e.g. http://192.168.1.42:8000
-export const BRIDGE_URL = 'http://172.20.10.2:8000';
+// For iOS Simulator, use localhost (it shares the Mac's network stack).
+export const BRIDGE_URL = 'http://localhost:8000';
 
 /** How many Pinterest inspiration images to fetch per generation */
 export const PINTEREST_FETCH_LIMIT = 10;
 
 /** Gemini API key */
-export const GEMINI_API_KEY = 'AIzaSyDICyML1zHiB1TJpVr5lFo1t58vJuIJfLU';
+export const GEMINI_API_KEY = 'AIzaSyBGUPLgV_ZpUZuB8QEAo35jNWQpMJQH25M';
 
 /** Gemini model for image generation */
 export const GEMINI_MODEL = 'gemini-2.5-flash-image';

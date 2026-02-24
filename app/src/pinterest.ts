@@ -26,20 +26,33 @@ export async function searchPinterest(
   fresh = false,
 ): Promise<PinterestOutfit[]> {
   const url = `${BRIDGE_URL}/search`;
+  console.log(`[pinterest] POST ${url}`, { keywords, limit, fresh });
 
   try {
+    // Fresh scrapes can take 60s+ (pinscrape + image downloads), so use a
+    // generous timeout.  Non-fresh requests use the cached manifest and are
+    // near-instant.
+    const timeoutMs = fresh ? 120_000 : 30_000;
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+
     const res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ keywords, limit, fresh }),
+      signal: controller.signal,
     });
 
+    clearTimeout(timer);
+
     if (!res.ok) {
-      console.warn(`[pinterest] Bridge returned ${res.status}`);
+      const body = await res.text().catch(() => '');
+      console.warn(`[pinterest] Bridge returned ${res.status}:`, body);
       return [];
     }
 
     const json = await res.json();
+    console.log(`[pinterest] Bridge returned ${(json.outfits ?? []).length} outfits`);
     return (json.outfits ?? []) as PinterestOutfit[];
   } catch (e) {
     console.warn('[pinterest] Bridge unreachable:', e);

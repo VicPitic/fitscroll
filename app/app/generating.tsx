@@ -124,8 +124,9 @@ export default function Generating() {
 
       if (pinterestOutfits.length === 0) {
         setError(
-          'Could not reach the Pinterest bridge.\n\n' +
-          'Make sure the bridge server is running and the URL in config.ts is correct.',
+          'No outfits found.\n\n' +
+          'The bridge server may still be scraping, or pinscrape returned no results.\n' +
+          'Check the Python server logs and try again.',
         );
         return;
       }
